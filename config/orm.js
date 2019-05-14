@@ -39,6 +39,7 @@ function printQuestionMarks(num) {
   }
 
   var orm = {
+    // selects everything fomr the burgers table
     selectAll: function(tableInput, cb) {
       var queryString = "SELECT * FROM " + tableInput + ";";
       connection.query(queryString, function(err, result) {
@@ -48,6 +49,7 @@ function printQuestionMarks(num) {
         cb(result);
       });
     },
+    // lets us create a new burger via the input values provided
     insertOne: function(table, cols, vals, cb) {
       var queryString = "INSERT INTO " + table;
   
@@ -68,6 +70,7 @@ function printQuestionMarks(num) {
         cb(result);
       });
     },
+    // updates the devoured value of the specific burger clicked based on ID
     updateOne: function(table, objColVals, condition, cb) {
       var queryString = "UPDATE " + table;
   

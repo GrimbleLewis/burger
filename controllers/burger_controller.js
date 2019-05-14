@@ -4,6 +4,8 @@ var router = express.Router();
 
 var burger = require("../models/burger.js");
 
+
+// gets the index page and allows the burgers table to display via the hbsObject
 router.get("/", function(req, res) {
     burger.selectAll(function(data){
         var hbsObject = {
@@ -14,6 +16,7 @@ router.get("/", function(req, res) {
     });   
 });
 
+// creates a new burgers via the textarea and pushes that into the database
 router.post("/api/burgers", function(req, res) {
     burger.insertOne([
         "burger_name"
@@ -24,6 +27,8 @@ router.post("/api/burgers", function(req, res) {
     });
 });
 
+// updates the devoured boolean value in the database which moves the burger from 
+// the left side of the screen to the right
 router.put("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
   
